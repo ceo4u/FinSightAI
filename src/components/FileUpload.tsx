@@ -53,8 +53,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect }) => {
         className={cn(
           "border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200 cursor-pointer",
           isDragOver 
-            ? "border-navy-400 bg-navy-50" 
-            : "border-navy-200 hover:border-navy-300 hover:bg-slate-50"
+            ? "border-cyan-400 bg-gradient-to-r from-blue-50 to-cyan-50" 
+            : "border-blue-300 hover:border-cyan-400 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
         )}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -64,20 +64,22 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect }) => {
         <div className="flex flex-col items-center space-y-4">
           <div className={cn(
             "p-4 rounded-full transition-colors",
-            isDragOver ? "bg-navy-100" : "bg-slate-100"
+            isDragOver 
+              ? "bg-gradient-to-r from-cyan-100 to-blue-100" 
+              : "bg-gradient-to-r from-blue-100 to-cyan-100"
           )}>
             {isDragOver ? (
-              <FileText className="h-8 w-8 text-navy-600" />
+              <FileText className="h-8 w-8 text-cyan-600" />
             ) : (
-              <Upload className="h-8 w-8 text-slate-600" />
+              <Upload className="h-8 w-8 text-blue-600" />
             )}
           </div>
           
           <div>
-            <p className="font-medium text-navy-700 mb-1">
+            <p className="font-medium text-blue-900 mb-1">
               {isDragOver ? "Drop your PDF here" : "Upload Financial PDF Report"}
             </p>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-blue-600">
               Drop or select a financial report PDF (max 10MB)
             </p>
           </div>
@@ -85,7 +87,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect }) => {
           <Button 
             variant="outline" 
             size="sm"
-            className="border-navy-200 text-navy-600 hover:bg-navy-50"
+            className="border-blue-300 text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:border-cyan-400"
           >
             Choose File
           </Button>

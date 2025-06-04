@@ -7,7 +7,7 @@ import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Brain, FileText, Zap } from 'lucide-react';
+import { Search, FileText, Zap } from 'lucide-react';
 
 interface ExtractedData {
   company_name?: string;
@@ -57,26 +57,26 @@ const Index = () => {
     if (!selectedFile) {
       toast({
         title: "No file selected",
-        description: "Please select a PDF file before extracting data.",
+        description: "Please select a PDF file before analyzing.",
         variant: "destructive"
       });
       return;
     }
 
     setIsProcessing(true);
-    console.log('Starting AI extraction for:', selectedFile.name);
+    console.log('Starting FinSightAI analysis for:', selectedFile.name);
     
     try {
       const data = await simulateAIProcessing();
       setExtractedData(data);
       toast({
-        title: "Extraction Complete!",
-        description: "Financial data has been successfully extracted from your PDF.",
+        title: "Analysis Complete!",
+        description: "FinSightAI has successfully extracted financial insights from your PDF.",
       });
     } catch (error) {
-      console.error('Extraction failed:', error);
+      console.error('Analysis failed:', error);
       toast({
-        title: "Extraction Failed",
+        title: "Analysis Failed",
         description: "There was an error processing your PDF. Please try again.",
         variant: "destructive"
       });
@@ -88,39 +88,42 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 font-inter">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        {/* Header */}
+        {/* Hero Section */}
         <div className="text-center mb-12 animate-fade-in">
-          <div className="flex items-center justify-center mb-4">
-            <div className="bg-navy-600 p-3 rounded-xl mr-4">
-              <Brain className="h-8 w-8 text-white" />
+          <div className="flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-r from-blue-900 to-cyan-600 p-4 rounded-xl mr-4 shadow-lg">
+              <Search className="h-10 w-10 text-white" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-navy-800">
-              AI Financial Report Extractor
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-900 to-cyan-600 bg-clip-text text-transparent">
+              🔍 FinSightAI
             </h1>
           </div>
-          <p className="text-xl text-navy-600 max-w-3xl mx-auto">
-            Extract structured financial data from PDF reports using advanced multimodal AI
+          <h2 className="text-2xl md:text-3xl font-semibold text-blue-900 mb-4">
+            AI-Powered Extraction of Financial Insights from PDFs
+          </h2>
+          <p className="text-lg text-blue-700 max-w-4xl mx-auto leading-relaxed">
+            Upload any financial report and extract structured data like revenue, net income, and year—powered by cutting-edge multimodal vision-language models.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Upload and Controls */}
           <div className="lg:col-span-1 space-y-6">
-            <Card className="border-0 shadow-lg">
+            <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
               <CardHeader className="pb-4">
-                <CardTitle className="flex items-center text-navy-700">
+                <CardTitle className="flex items-center text-blue-900">
                   <FileText className="h-5 w-5 mr-2" />
-                  Upload Document
+                  Upload Your Financial PDF Report
                 </CardTitle>
-                <CardDescription>
-                  Select a financial PDF report to analyze
+                <CardDescription className="text-blue-600">
+                  Supported formats: PDF | Ensure the report includes clear financial statements
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <FileUpload onFileSelect={handleFileSelect} />
                 
                 {selectedFile && (
-                  <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                  <div className="mt-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
                     <p className="text-sm font-medium text-green-800">File Ready:</p>
                     <p className="text-sm text-green-600 truncate">{selectedFile.name}</p>
                     <p className="text-xs text-green-500">
@@ -132,20 +135,24 @@ const Index = () => {
                 <Button 
                   onClick={handleExtractData}
                   disabled={!selectedFile || isProcessing}
-                  className="w-full mt-6 bg-navy-600 hover:bg-navy-700 text-white font-medium py-6 text-lg"
+                  className="w-full mt-6 bg-gradient-to-r from-blue-900 to-cyan-600 hover:from-blue-800 hover:to-cyan-500 text-white font-semibold py-6 text-lg rounded-xl shadow-lg transition-all duration-200"
                 >
                   {isProcessing ? (
                     <div className="flex items-center">
                       <LoadingSpinner size="sm" className="mr-2" />
-                      Processing...
+                      Analyzing...
                     </div>
                   ) : (
                     <div className="flex items-center">
                       <Zap className="h-5 w-5 mr-2" />
-                      Extract Financial Data
+                      Analyze Report with FinSightAI
                     </div>
                   )}
                 </Button>
+                
+                <p className="text-xs text-blue-600 mt-3 text-center">
+                  FinSightAI uses Donut Transformer to analyze and extract key financial insights from PDF documents.
+                </p>
               </CardContent>
             </Card>
 
@@ -154,24 +161,26 @@ const Index = () => {
 
           {/* Right Column - Results */}
           <div className="lg:col-span-2">
-            <Card className="border-0 shadow-lg h-full">
-              <CardHeader>
-                <CardTitle className="text-navy-700">Extracted Financial Information</CardTitle>
-                <CardDescription>
-                  AI-powered analysis results from your PDF document
+            <Card className="border-0 shadow-xl h-full bg-white/80 backdrop-blur-sm">
+              <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-t-lg">
+                <CardTitle className="text-blue-900 flex items-center">
+                  📈 Extracted Financial Insights
+                </CardTitle>
+                <CardDescription className="text-blue-700">
+                  Here's what FinSightAI found in your document:
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-6">
                 {isProcessing ? (
                   <div className="flex flex-col items-center justify-center py-16">
                     <LoadingSpinner size="lg" className="mb-4" />
-                    <h3 className="text-lg font-semibold text-navy-700 mb-2">
-                      AI Processing in Progress
+                    <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                      FinSightAI Processing in Progress
                     </h3>
-                    <p className="text-navy-500 text-center max-w-md">
-                      Our Donut transformer model is analyzing your PDF and extracting financial data...
+                    <p className="text-blue-600 text-center max-w-md">
+                      Our Donut transformer model is analyzing your PDF and extracting financial insights...
                     </p>
-                    <div className="mt-6 text-sm text-navy-400 animate-pulse-slow">
+                    <div className="mt-6 text-sm text-blue-500 animate-pulse-slow">
                       This usually takes 30-60 seconds
                     </div>
                   </div>
@@ -179,14 +188,14 @@ const Index = () => {
                   <JsonViewer data={extractedData} />
                 ) : (
                   <div className="flex flex-col items-center justify-center py-16 text-center">
-                    <div className="bg-navy-100 p-4 rounded-full mb-4">
-                      <FileText className="h-12 w-12 text-navy-400" />
+                    <div className="bg-gradient-to-r from-blue-100 to-cyan-100 p-6 rounded-full mb-4">
+                      <FileText className="h-16 w-16 text-blue-600" />
                     </div>
-                    <h3 className="text-lg font-semibold text-navy-700 mb-2">
-                      Ready to Extract Data
+                    <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                      Ready to Extract Insights
                     </h3>
-                    <p className="text-navy-500 max-w-md">
-                      Upload a financial PDF report and click "Extract Financial Data" to see AI-powered analysis results here.
+                    <p className="text-blue-600 max-w-md">
+                      Upload a financial PDF report and click "Analyze Report with FinSightAI" to see AI-powered analysis results here.
                     </p>
                   </div>
                 )}
@@ -194,6 +203,13 @@ const Index = () => {
             </Card>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="text-center mt-16 py-6 border-t border-blue-100">
+          <p className="text-sm text-blue-600">
+            Built by DT | Powered by Hugging Face + Donut Transformer
+          </p>
+        </footer>
       </div>
     </div>
   );
