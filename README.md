@@ -1,73 +1,132 @@
-# Welcome to your Lovable project
+<h1 align="center">🧾 FinsightAI — Ledger AI Reader</h1>
 
-## Project info
+<p align="center">
+  <b>AI-powered financial document reader</b><br/>
+  Analyze PDFs, extract insights, and ask questions — all in one place.
+</p>
 
-**URL**: https://lovable.dev/projects/e6d89c2f-a8ba-45a9-b884-85c3173a9efa
+<p align="center">
+  <a href="https://finsightai-ogj3.onrender.com/" target="_blank">
+    🔗 Live Demo
+  </a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/ceo4u/FinSightAI" target="_blank">
+    📂 GitHub Repository
+  </a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-features">✨ Features</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tech-stack">🧰 Tech Stack</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-installation">📦 Installation</a>
+</p>
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
 
-**Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e6d89c2f-a8ba-45a9-b884-85c3173a9efa) and start prompting.
+## 🚀 Live Demo
 
-Changes made via Lovable will be committed automatically to this repo.
+> 🔗 Visit: [https://finsightai-ogj3.onrender.com](https://finsightai-ogj3.onrender.com)
 
-**Use your preferred IDE**
+Upload a financial PDF and extract summaries, insights, and run Q&A — instantly.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## ✨ Features
 
-Follow these steps:
+- 📄 Upload **PDFs** such as earnings reports or financial statements
+- 🤖 Get **AI-generated summaries** from document content
+- 🔍 Ask **natural language questions** from document context
+- 🎨 **Clean, responsive UI** with ShadCN + TailwindCSS
+- ⚡ **Fast frontend** powered by Vite + React + React Query
+- 🌐 Seamless **SPA routing** with React Router
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🧰 Tech Stack
 
-# Step 3: Install the necessary dependencies.
-npm i
+| Category      | Technologies |
+|---------------|--------------|
+| **Frontend**  | React, Vite, TypeScript |
+| **UI**        | ShadCN UI, TailwindCSS, Lucide Icons |
+| **Forms**     | React Hook Form, Zod |
+| **State Mgmt**| TanStack React Query |
+| **Routing**   | React Router DOM |
+| **Deployment**| Render |
+| **Extras**    | Embla Carousel, Sonner, clsx, class-variance-authority |
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+---
+
+## 📦 Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/ceo4u/FinSightAI.git
+cd FinSightAI
+npm install
+```
+
+Start in development:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build for production:
+```bash
+npm run build
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Preview production build:
+```bash
+npm run preview
+```
 
-**Use GitHub Codespaces**
+## ☁️ Deployment on Render
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Install the serve package:
+```bash
+npm install serve
+```
 
-## What technologies are used for this project?
+Add the following to your `package.json` scripts:
+```json
+"start": "serve -s dist -l $PORT"
+```
 
-This project is built with:
+Push to GitHub and connect to Render using the static site setup.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📁 Project Structure (Simplified)
 
-## How can I deploy this project?
+```
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── App.tsx
+│   └── main.tsx
+├── tailwind.config.js
+├── vite.config.ts
+└── package.json
+```
 
-Simply open [Lovable](https://lovable.dev/projects/e6d89c2f-a8ba-45a9-b884-85c3173a9efa) and click on Share -> Publish.
+## 🧠 How It Works
 
-## Can I connect a custom domain to my Lovable project?
+1. Upload a PDF file.
+2. Text is extracted and sent to an LLM.
+3. The AI generates summaries and allows Q&A from the document.
+4. The frontend displays it all in a clean, interactive interface.
 
-Yes, you can!
+## 🙌 Contributing
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Contributions are welcome! Feel free to fork the repository, submit pull requests, and improve the app together.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📄 License
+
+This project is licensed under the MIT License — see the LICENSE file for details.
+
+## 📬 Contact
+
+Built by [@ceo4u](https://github.com/ceo4u)  
+Reach out for feedback or collaboration!
