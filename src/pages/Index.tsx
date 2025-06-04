@@ -145,7 +145,7 @@ const Index = () => {
                   ) : (
                     <div className="flex items-center">
                       <Zap className="h-5 w-5 mr-2" />
-                      Analyze Report with FinSightAI
+                      Analyze
                     </div>
                   )}
                 </Button>
